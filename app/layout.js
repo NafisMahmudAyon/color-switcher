@@ -1,5 +1,10 @@
 import Head from "next/head";
 import "./globals.css";
+
+
+
+
+
 import Script from "next/script";
 import Link from "next/link";
 
@@ -19,7 +24,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body className="">
         {/* Navbar  */}
-        <nav className="h-14"></nav>
+        <nav className="h-14 flex justify-center items-center text-emerald-500 font bold text-4xl"> Color Switcher </nav>
         {/* main */}
         {children}
         

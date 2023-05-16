@@ -1,23 +1,35 @@
 "use client";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import Template from "@/components/Template";
+import Template1 from "@/components/Template1";
+import Templates from "@/components/Templates";
 import { useState } from "react";
 
 export default function Home() {
   const [color, setColor] = useState("#FFFFFF"); // set initial color value to white
-  const [prymaryColor, setPrimaryColor] = useState("#FFFFFF"); // set initial color value to white
-  const [secondaryColor, setSecondaryColor] = useState("#0000FF"); // set initial color value to white
-  const [accentColor, setAccentColor] = useState("#FFFF00"); // set initial color value to white
+  const [prymaryColor, setPrimaryColor] = useState("#181e4b"); // set initial color value to white
+  const [secondaryColor, setSecondaryColor] = useState("#df6951"); // set initial color value to white
+  const [accentColor, setAccentColor] = useState("#5e6282"); // set initial color value to white
   // const handleColorChange = (newColor) => {
   //   setColor(newColor);
   // };
-  const handleColorChange = (e) => {
-    setColor(e.target.value);
+  const handlePrimaryColorChange = (e) => {
+    
     setPrimaryColor(e.target.value);
   };
-  const handleColorChanges = (props) => {
-    setColor(props);
-    setPrimaryColor(props);
+  const handleSecondaryColorChange = (e) => {
+    
+    setSecondaryColor(e.target.value);
+  };
+  const handleAccentColorChange = (e) => {
+    
+    setAccentColor(e.target.value);
+  };
+  const handleColorChanges = (primaryColor, secondaryColor, accentColor) => {
+    
+    setPrimaryColor(primaryColor);
+    setSecondaryColor(secondaryColor);
+    setAccentColor(accentColor);
   };
 
   return (
@@ -29,38 +41,55 @@ export default function Home() {
           <div className="border-b-2 border-solid border-gray-800 ">
             <div className="flex justify-between py-2 px-4 bg-slate-400">
               <div> Color Scheme</div>
-              <button onClick={() => handleColorChanges("#4287f5")}>Use this</button>
+              <button onClick={() => {
+                const primaryColor = "#a5744f";
+                const secondaryColor = "#595957";
+                const accentColor = "#2b2c29";
+                handleColorChanges(primaryColor, secondaryColor, accentColor)
+              }}>Use this</button>
             </div>
-            <div className="flex gap-2 py-3 px-4">
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
-            </div>
-          </div>
-
-          <div className="border-b-2 border-solid border-red-400">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme</div>
-              <div>Use this</div>
-            </div>
-            <div className="flex gap-2 py-3 px-4">
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
+            <div className="flex justify-center  gap-2 py-3 px-4">
+              <div className="w-8 h-8 rounded-full bg-[#a5744f]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#595957]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#2b2c29]"></div>
             </div>
           </div>
 
-          <div className="border-b-2 border-solid border-red-400">
+          <div className="border-b-2 border-solid border-gray-800 ">
             <div className="flex justify-between py-2 px-4 bg-slate-400">
               <div> Color Scheme</div>
-              <div>Use this</div>
+              <button onClick={() => {
+                const primaryColor = "#3fbcaa";
+                const secondaryColor = "#dc2a24";
+                const accentColor = "#1c3147";
+                handleColorChanges(primaryColor, secondaryColor, accentColor)
+              }}>Use this</button>
             </div>
-            <div className="flex gap-2 py-3 px-4">
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
-              <div className="w-8 h-8 bg-black"></div>
+            <div className="flex justify-center  gap-2 py-3 px-4">
+              <div className="w-8 h-8 rounded-full bg-[#3fbcaa]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#dc2a24]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#1c3147]"></div>
             </div>
           </div>
+
+          <div className="border-b-2 border-solid border-gray-800 ">
+            <div className="flex justify-between py-2 px-4 bg-slate-400">
+              <div> Color Scheme</div>
+              <button onClick={() => {
+                const primaryColor = "#101557";
+                const secondaryColor = "#5837e0";
+                const accentColor = "#f4ad2e";
+                handleColorChanges(primaryColor, secondaryColor, accentColor)
+              }}>Use this</button>
+            </div>
+            <div className="flex  justify-center gap-2 py-3 px-4">
+              <div className="w-8 h-8 rounded-full bg-[#101557]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#5837e0]"></div>
+              <div className="w-8 h-8 rounded-full bg-[#f4ad2e]"></div>
+            </div>
+          </div>
+
+          
 
         </div>
       </div>
@@ -75,14 +104,14 @@ export default function Home() {
           </div>
           <main className="w-full relative">
             <div className="sticky top-0 z-[51] pt-8  bg-slate-400">
-              <div className="flex gap-6 pb-3">
+              <div className="flex gap-6 pb-3 justify-center">
 
                 <div className="text-center">
                   <p>Primary Color</p>
                   <input
                     type="color"
                     value={prymaryColor}
-                    onChange={handleColorChange}
+                    onChange={handlePrimaryColorChange}
                   />
                 </div>
                 <div className="text-center">
@@ -90,7 +119,7 @@ export default function Home() {
                   <input
                     type="color"
                     value={secondaryColor}
-                    onChange={handleColorChange}
+                    onChange={handleSecondaryColorChange}
                   />
                 </div>
                 <div className="text-center">
@@ -98,15 +127,17 @@ export default function Home() {
                   <input
                     type="color"
                     value={accentColor}
-                    onChange={handleColorChange}
+                    onChange={handleAccentColorChange}
                   />
                 </div>
                 
               </div>
-              <ColorSwitcher color={color} />
+              {/* <ColorSwitcher color={color} /> */}
             </div>
-            <div className="h-[calc(100%-150px)] overflow-y-scroll">
-              <Template color={color} primaryColor={prymaryColor} secondaryColor={secondaryColor} accentColor={accentColor} />
+            <div className="h-[calc(100%-150px)] w-[100%] pt-8 ">
+              {/* <Template color={color} primaryColor={prymaryColor} secondaryColor={secondaryColor} accentColor={accentColor} /> */}
+              {/* <Templates /> */}
+              <Template1 primaryColor={prymaryColor} secondaryColor={secondaryColor} accentColor={accentColor} />
             </div>
           </main>
         </div>
