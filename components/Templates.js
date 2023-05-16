@@ -876,11 +876,11 @@ const Templates = () => {
                   </strong>
                 </h1>
                 <p class="mbr-text mbr-fonts-style display-7">
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                   et tellus at nisi fringilla gravida consequat sed lectus.
                   Nullam placerat, orci sit amet bibendum auctor, ipsum lectus
                   fringilla tellus, in faucibus lacus nulla et nunc. Mauris mi
-                  libero, laoreet vel rhoncus luctus, scelerisque eu lacus."
+                  libero, laoreet vel rhoncus luctus, scelerisque eu lacus.&quot;
                 </p>
                 <div class="img-wrap">
                   <img
