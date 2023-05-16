@@ -189,13 +189,13 @@ const Template = (props) => {
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Don't let your uses guess by attaching tooltips and popoves to
+                  Don&apos;t let your uses guess by attaching tooltips and popoves to
                   any element. Just make sure you enable them first via
                   JavaScript.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
                   The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
+                  started faster. You can change the text and images and you&apos;re
                   good to go. Just make sure you enable them first via
                   JavaScript.
                 </p>
@@ -278,7 +278,7 @@ const Template = (props) => {
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
                     The extension comes with three pre-built pages to help you
                     get started faster. You can change the text and images and
-                    you're good to go.
+                    you&apos;re good to go.
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -530,7 +530,7 @@ const Template = (props) => {
                 </h6>
                 <p className="mt-2 mb-4 text-gray-500">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card&apos;s content.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -542,7 +542,7 @@ const Template = (props) => {
                 </h5>
                 <p className="mt-2 mb-4 text-gray-500">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card&apos;s content.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -554,7 +554,7 @@ const Template = (props) => {
                 </h5>
                 <p className="mt-2 mb-4 text-gray-500">
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card&apos;s content.
                 </p>
               </div>
             </div>
@@ -653,7 +653,7 @@ const Template = (props) => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-6/12 px-4">
-              <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
+              <h4 className="text-3xl font-semibold">Let&apos;s keep in touch!</h4>
               <h5 className="text-lg mt-0 mb-2 text-gray-700">
                 Find us on any of these platforms, we respond 1-2 business days.
               </h5>
