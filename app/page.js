@@ -5,14 +5,19 @@ import { useState } from "react";
 
 export default function Home() {
   const [color, setColor] = useState("#FFFFFF"); // set initial color value to white
+  const [prymaryColor, setPrimaryColor] = useState("#FFFFFF"); // set initial color value to white
+  const [secondaryColor, setSecondaryColor] = useState("#0000FF"); // set initial color value to white
+  const [accentColor, setAccentColor] = useState("#FFFF00"); // set initial color value to white
   // const handleColorChange = (newColor) => {
   //   setColor(newColor);
   // };
   const handleColorChange = (e) => {
     setColor(e.target.value);
+    setPrimaryColor(e.target.value);
   };
   const handleColorChanges = (props) => {
     setColor(props);
+    setPrimaryColor(props);
   };
 
   return (
@@ -69,18 +74,39 @@ export default function Home() {
             <div className="w-3 h-3 bg-[#61c454] rounded-full"></div>
           </div>
           <main className="w-full relative">
-            <div className="sticky top-0 z-[51] pt-8 h-[150px] bg-slate-400">
-              <div className="">
-                <input
-                  type="color"
-                  value={color}
-                  onChange={handleColorChange}
-                />
-                <ColorSwitcher color={color} />
+            <div className="sticky top-0 z-[51] pt-8  bg-slate-400">
+              <div className="flex gap-6 pb-3">
+
+                <div className="text-center">
+                  <p>Primary Color</p>
+                  <input
+                    type="color"
+                    value={prymaryColor}
+                    onChange={handleColorChange}
+                  />
+                </div>
+                <div className="text-center">
+                  <p>Secondary Color</p>
+                  <input
+                    type="color"
+                    value={secondaryColor}
+                    onChange={handleColorChange}
+                  />
+                </div>
+                <div className="text-center">
+                  <p>Accent Color</p>
+                  <input
+                    type="color"
+                    value={accentColor}
+                    onChange={handleColorChange}
+                  />
+                </div>
+                
               </div>
+              <ColorSwitcher color={color} />
             </div>
             <div className="h-[calc(100%-150px)] overflow-y-scroll">
-              <Template color={color} />
+              <Template color={color} primaryColor={prymaryColor} secondaryColor={secondaryColor} accentColor={accentColor} />
             </div>
           </main>
         </div>

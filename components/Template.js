@@ -6,8 +6,12 @@ const Template = (props) => {
 
   const styles = {
     "color": props.color,
-    "--color-secondary": color,
-    "--color-accent": color,
+  };
+  const navStyle = {
+    "color": props.primaryColor,
+  };
+  const navStyleButton = {
+    "background-color": props.primaryColor,
   };
   return (
     <div className="text-gray-800 antialiased relative">
@@ -15,7 +19,8 @@ const Template = (props) => {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase " style={styles}
+              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase " 
+              style={navStyle}
               href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
             >
               Tailwind Starter Kit
@@ -36,6 +41,7 @@ const Template = (props) => {
               <li className="flex items-center">
                 <a
                   className="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  style={navStyle}
                   href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/landing"
                 >
                   <i className="lg:text-gray-300 text-gray-500 far fa-file-alt text-lg leading-lg mr-2"></i>
@@ -74,6 +80,7 @@ const Template = (props) => {
               <li className="flex items-center">
                 <button
                   className="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 transition-all ease-in-out duration-150 delay-0"
+                  style={navStyleButton}
                   type="button"
                   // style="transition: all 0.15s ease 0s;"
                 >
