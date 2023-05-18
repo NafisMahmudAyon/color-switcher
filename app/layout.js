@@ -9,8 +9,6 @@ export const metadata = {
   description: "Generate Color Palette For Your Website",
 };
 
-
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -28,9 +26,8 @@ export default function RootLayout({ children }) {
           </div>
           <div className="flex gap-3">
             <div className="bg-emerald-500 px-5 py-2 rounded-lg hover:bg-emerald-800 hover:text-white font-bold flex items-center gap-1">
-              <a href="https://github.com/NafisMahmudAyon">github
-              </a>
-              <img src="./github.png" className="w-8 h-8" />
+              <a href="https://github.com/NafisMahmudAyon">github</a>
+              <img src="./github.png" className="w-6 h-6" />
             </div>
             <div className="bg-emerald-500 px-5 py-2 rounded-lg hover:bg-emerald-800 hover:text-white font-bold">
               <a href="https://nafisbd.com"> Visit My Website</a>
