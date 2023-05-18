@@ -24,50 +24,50 @@ const Template1 = (props) => {
     <div className="w-[100%] h-[100%] bg-white relative">
         <img
               src="./images/Decore.png"
-              class="absolute right-0 top-0"
+              className="absolute right-0 top-0"
               alt=""
             />
-      <div class="px-8 py-6">
+      <div className="px-8 py-6">
         <div>
-          <div class="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <div>
               <img src="./images/Logo.png" alt="" />
             </div>
-            <div class="flex items-center space-x-12 z-50">
-              <a href="#" class="font-semibold"
+            <div className="flex items-center space-x-12 z-50">
+              <a href="#" className="font-semibold"
                 style={navStyle}
               >
                 Destinations
               </a>
-              <a href="#" class="font-semibold"
+              <a href="#" className="font-semibold"
                 style={navStyle}
               >
                 Hotels
               </a>
-              <a href="#" class="font-semibold "
+              <a href="#" className="font-semibold "
                 style={navStyle}
               >
                 Flights
               </a>
-              <a href="#" class="font-semibold "
+              <a href="#" className="font-semibold "
                 style={navStyle}
               >
                 Bookings
               </a>
-              <a href="#" class="font-semibold"
+              <a href="#" className="font-semibold"
                 style={navStyle}
               >
                 Login
               </a>
               <a
                 href="#"
-                class="border-2 px-4 py-1.5 rounded-md  font-semibold  "
+                className="border-2 px-4 py-1.5 rounded-md  font-semibold  "
                 style={navStyleBorder}
               >
                 Sign up
               </a>
-              <div class="flex items-center">
-                <a href="#" class="font-semibold "
+              <div className="flex items-center">
+                <a href="#" className="font-semibold "
                 style={navStyle}
               >
                   EN
@@ -78,7 +78,7 @@ const Template1 = (props) => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-3 h-3"
+                  className="w-3 h-3"
                 >
                   <path
                     stroke-linecap="round"
@@ -90,24 +90,24 @@ const Template1 = (props) => {
             </div>
             
           </div>
-          <div class=" flex items-center h-[800px]">
-            <div class="w-[50%] z-[100]">
+          <div className=" flex items-center h-[800px]">
+            <div className="w-[50%] z-[100]">
               <div>
-                <div class="">
-                  <div class="">
-                    <p class=" font-bold text-2xl"
+                <div className="">
+                  <div className="">
+                    <p className=" font-bold text-2xl"
                 style={styles}
               >
                       Best Destinations around the world
                     </p>
-                    <div class="font-bold text-6xl z-50 py-8"
+                    <div className="font-bold text-6xl z-50 py-8"
                 style={navStyle}
               >
                       Travel, enjoy and live a new and full life
                     </div>
                   </div>
                   <div className="py-3">
-                    <span class=""
+                    <span className=""
                     style={accentColor}
                     >
                       Built Wicket longer admire do barton vanity itself do in
@@ -115,16 +115,16 @@ const Template1 = (props) => {
                       gate sell they west hard for the.
                     </span>
                   </div>
-                  <div class="flex items-center space-x-6">
+                  <div className="flex items-center space-x-6">
                     <a
                       href="#"
-                      class="px-4 py-2.5 rounded-md font-bold   text-white"
+                      className="px-4 py-2.5 rounded-md font-bold   text-white"
                       style={style}
                       >
                       Find out more
                     </a>
-                    <div class="flex items-center space-x-3">
-                      <div class="rounded-full  p-2  text-white "
+                    <div className="flex items-center space-x-3">
+                      <div className="rounded-full  p-2  text-white "
                       style={style}
               >
                         <svg
@@ -143,7 +143,7 @@ const Template1 = (props) => {
                         </svg>
                       </div>
                       <div>
-                        <span class="" style={accentColor}>Play Demo</span>
+                        <span className="" style={accentColor}>Play Demo</span>
                       </div>
                     </div>
                   </div>
@@ -151,8 +151,8 @@ const Template1 = (props) => {
               </div>
             </div>
             <div className="w-[50%] z-20">
-              <div class="">
-                <img src="./images/Traveller.png" class="" alt="" />
+              <div className="">
+                <img src="./images/Traveller.png" className="" alt="" />
               </div>
             </div>
           </div>

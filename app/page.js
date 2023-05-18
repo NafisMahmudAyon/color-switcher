@@ -1,9 +1,111 @@
 "use client";
 import ColorSwitcher from "@/components/ColorSwitcher";
+import ColorsFetching from "@/components/ColorsFetching";
 import Template from "@/components/Template";
 import Template1 from "@/components/Template1";
 import Templates from "@/components/Templates";
 import { useState } from "react";
+
+// export const getServerSideProps = async () => {
+//   const res = await fetch(
+//     "http://localhost:4001/color-palette"
+//   );
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       colors: data,
+//     },
+//   };
+// };
+
+const colors = [
+  {
+    id: 1,
+    primaryColor: "#a5744f",
+    secondaryColor: "#595957",
+    accentColor: "#2b2c29",
+  },
+  {
+    id: 2,
+    primaryColor: "#3fbcaa",
+    secondaryColor: "#dc2a24",
+    accentColor: "#1c3147",
+  },
+  {
+    id: 3,
+    primaryColor: "#101557",
+    secondaryColor: "#5837e0",
+    accentColor: "#f4ad2e",
+  },
+  {
+    id: 4,
+    primaryColor: "#a07694",
+    secondaryColor: "#87a7d2",
+    accentColor: "#c9d6e1",
+  },
+  {
+    id: 5,
+    primaryColor: "#0458f8",
+    secondaryColor: "#393e49",
+    accentColor: "#d0d8db",
+  },
+  {
+    id: 6,
+    primaryColor: "#f0c575",
+    secondaryColor: "#eb1222",
+    accentColor: "#2f35da",
+  },
+  {
+    id: 7,
+    primaryColor: "#ab755f",
+    secondaryColor: "#434441",
+    accentColor: "#427274",
+  },
+  {
+    id: 8,
+    primaryColor: "#a5744f",
+    secondaryColor: "#595957",
+    accentColor: "#2b2c29",
+  },
+  {
+    id: 2,
+    primaryColor: "#f0dab1",
+    secondaryColor: "#f77813",
+    accentColor: "#1c3147",
+  },
+  {
+    id: 3,
+    primaryColor: "#101557",
+    secondaryColor: "#5837e0",
+    accentColor: "#f4ad2e",
+  },
+  {
+    id: 4,
+    primaryColor: "#a07694",
+    secondaryColor: "#87a7d2",
+    accentColor: "#c9d6e1",
+  },
+  {
+    id: 5,
+    primaryColor: "#0458f8",
+    secondaryColor: "#393e49",
+    accentColor: "#d0d8db",
+  },
+  {
+    id: 6,
+    primaryColor: "#f0c575",
+    secondaryColor: "#eb1222",
+    accentColor: "#2f35da",
+  },
+  {
+    id: 7,
+    primaryColor: "#ab755f",
+    secondaryColor: "#434441",
+    accentColor: "#427274",
+  },
+  
+];
 
 export default function Home() {
   const [concateColor, setConcateColor] = useState(""); // set initial color value to white
@@ -15,6 +117,12 @@ export default function Home() {
   // const handleColorChange = (newColor) => {
   //   setColor(newColor);
   // };
+  const styleProps = (props) => {
+    const style = {
+      "backgroundColor": props.color
+    }
+
+  }
   const pColor = primaryColor;
   const sColor = secondaryColor;
   const aColor = accentColor;
@@ -33,8 +141,17 @@ export default function Home() {
     setSecondaryColor(secondaryColor);
     setAccentColor(accentColor);
   };
-// copy code 
-  const codeString = "--primary-color : " + pColor + "; " + "--secondary-color :" + sColor + "; " + "--accent-color :" + aColor + ";";
+  // copy code
+  const codeString =
+    "--primary-color : " +
+    pColor +
+    "; " +
+    "--secondary-color :" +
+    sColor +
+    "; " +
+    "--accent-color :" +
+    aColor +
+    ";";
 
   const copyText = () => {
     navigator.clipboard.writeText(`${codeString}`);
@@ -45,204 +162,104 @@ export default function Home() {
       setButtonText("Copy");
     }, 2000);
   };
-// copy code end 
+  // copy code end
 
-// RandomColorGenerator
-function RandomColorGenerator() {
-  function generateRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
+  // RandomColorGenerator
+  function RandomColorGenerator() {
+    function generateRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
 
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+
+      return color;
     }
-    
 
-    return color;
-      
+    // function secColorGenerator() {
+    //   let colors = generateRandomColor();
 
+    //   if (colors == priColor) {
+    //     colors = generateRandomColor();
+    //   }
+
+    //   else {
+    //     colors
+    //   }
+
+    // }
+    const priColor = generateRandomColor();
+    const secColor = generateRandomColor();
+    const accColor = generateRandomColor();
+    handleColorChanges(priColor, secColor, accColor);
   }
-  
-  // function secColorGenerator() {
-  //   let colors = generateRandomColor();
-
-  //   if (colors == priColor) {
-  //     colors = generateRandomColor();
-  //   }
-    
-  //   else {
-  //     colors
-  //   }
-
-    
-  // }
-  const priColor = generateRandomColor();
-  const secColor = generateRandomColor(); 
-  const accColor = generateRandomColor(); 
-  handleColorChanges(priColor, secColor, accColor);
-}
   // RandomColorGenerator end
-
 
   return (
     <div className="flex bg-slate-400 h-[calc(100vh-3.5rem)]">
       {/* Sidebar  */}
       <div className="min-w-[25%] bg-slate-300 pt-4 h-[calc(100vh-3.5rem)] flex justify-center shadow-xl shadow-black">
         <div className="w-[calc(100%-20px)] bg-slate-600  rounded-t-xl rounded-b-xl h-[calc(100%-20px)]">
-        <div className="h-8  rounded-t-xl sticky top-0 left-0 z-[52] bg-slate-500 flex gap-2 items-center px-4">
+          <div className="h-8  rounded-t-xl sticky top-0 left-0 z-[52] bg-slate-500 flex gap-2 items-center px-4">
             <div className="w-3 h-3 bg-[#ed6a5e] rounded-full"></div>
             <div className="w-3 h-3 bg-[#f4be4f] rounded-full"></div>
             <div className="w-3 h-3 bg-[#61c454] rounded-full"></div>
           </div>
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 1</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#a5744f";
-                  const secondaryColor = "#595957";
-                  const accentColor = "#2b2c29";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex justify-center  gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#a5744f]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#595957]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#2b2c29]"></div>
-            </div>
-          </div>
 
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 2</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#3fbcaa";
-                  const secondaryColor = "#dc2a24";
-                  const accentColor = "#1c3147";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex justify-center  gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#3fbcaa]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#dc2a24]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#1c3147]"></div>
-            </div>
-          </div>
-
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 3</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#101557";
-                  const secondaryColor = "#5837e0";
-                  const accentColor = "#f4ad2e";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex  justify-center gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#101557]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#5837e0]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#f4ad2e]"></div>
-            </div>
-          </div>
-
-
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 4</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#a07694";
-                  const secondaryColor = "#87a7d2";
-                  const accentColor = "#c9d6e1";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex  justify-center gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#a07694]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#87a7d2]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#c9d6e1]"></div>
-            </div>
-          </div>
-
-
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 5</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#0458f8";
-                  const secondaryColor = "#393e49";
-                  const accentColor = "#d0d8db";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex  justify-center gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#0458f8]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#393e49]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#d0d8db]"></div>
-            </div>
-          </div>
-
-
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 6</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#f0c575";
-                  const secondaryColor = "#eb1222";
-                  const accentColor = "#2f35da";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex  justify-center gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#f0c575]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#eb1222]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#2f35da]"></div>
-            </div>
-          </div>
-
-
-          <div className="border-b-2 border-solid border-gray-800 ">
-            <div className="flex justify-between py-2 px-4 bg-slate-400">
-              <div> Color Scheme - 7</div>
-              <button
-                onClick={() => {
-                  const primaryColor = "#ab755f";
-                  const secondaryColor = "#434441";
-                  const accentColor = "#427274";
-                  handleColorChanges(primaryColor, secondaryColor, accentColor);
-                }}
-              >
-                Use this
-              </button>
-            </div>
-            <div className="flex  justify-center gap-2 py-3 px-4">
-              <div className="w-8 h-8 rounded-full bg-[#ab755f]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#434441]"></div>
-              <div className="w-8 h-8 rounded-full bg-[#427274]"></div>
-            </div>
+          <div>
+            {colors &&
+              colors.map((color) => (
+                <div
+                  className="border-b-2 border-solid border-gray-800 "
+                  key={color.id}
+                >
+                  <div className="flex justify-between py-2 px-4 bg-slate-400">
+                    <div> Color Scheme - {color.id}</div>
+                    <button
+                      onClick={() => {
+                        const primaryColor = `${color.primaryColor}`;
+                        const secondaryColor = `${color.secondaryColor}`;
+                        const accentColor = `${color.accentColor}`;
+                        handleColorChanges(
+                          primaryColor,
+                          secondaryColor,
+                          accentColor
+                        );
+                      }}
+                    >
+                      {" "}
+                      use this
+                    </button>
+                  </div>
+                  <div
+                    className="flex  justify-center gap-2 py-3 px-4"
+                    onClick={() => {
+                      const primaryColor = `${color.primaryColor}`;
+                      const secondaryColor = `${color.secondaryColor}`;
+                      const accentColor = `${color.accentColor}`;
+                      handleColorChanges(
+                        primaryColor,
+                        secondaryColor,
+                        accentColor
+                      );
+                    }}
+                  >
+                    <div
+                      className={`w-8 h-8 rounded-full bg-[${color.primaryColor}]`}
+                      title={`${color.primaryColor}`}
+                    ></div>
+                    <div
+                      className={`w-8 h-8 rounded-full bg-[${color.secondaryColor}]`}
+                      title={`${color.secondaryColor}`}
+                    ></div>
+                    <div
+                      className={`w-8 h-8 rounded-full bg-[${color.accentColor}]`}
+                      title={`${color.accentColor}`}
+                    ></div>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -263,6 +280,7 @@ function RandomColorGenerator() {
                   <input
                     type="color"
                     value={primaryColor}
+                    title={primaryColor}
                     onChange={handlePrimaryColorChange}
                   />
                 </div>
@@ -271,6 +289,7 @@ function RandomColorGenerator() {
                   <input
                     type="color"
                     value={secondaryColor}
+                    title={secondaryColor}
                     onChange={handleSecondaryColorChange}
                   />
                 </div>
@@ -279,6 +298,7 @@ function RandomColorGenerator() {
                   <input
                     type="color"
                     value={accentColor}
+                    title={accentColor}
                     onChange={handleAccentColorChange}
                   />
                 </div>
@@ -286,7 +306,6 @@ function RandomColorGenerator() {
               {/* <ColorSwitcher color={color} /> */}
             </div>
             <div className="flex justify-center py-3 bg-slate-400 border-t-2 border-neutral-800">
-
               <button
                 onClick={copyText}
                 className="px-4 py-2 mr-4 mt-4 font-semibold  rounded-md shadow-md bg-cyan-800 hover:bg-cyan-900 hover:shadow-cyan-700 "
