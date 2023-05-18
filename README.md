@@ -1,3 +1,9 @@
+# Color Palette Generator
+## Preview Website
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDQ3M2YwYzYzZWZkNDUzNzJkMmQ0YmI5ZDhhODAzMjBkYzc4MTZiZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/nHBRRyFRW0spjdBP56/giphy.gif)
+![enter image description here](https://i.imgur.com/KW3Po26.png)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
