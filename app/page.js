@@ -64,47 +64,52 @@ const colors = [
   },
   {
     id: 8,
-    primaryColor: "#a5744f",
-    secondaryColor: "#595957",
-    accentColor: "#2b2c29",
-  },
-  {
-    id: 2,
-    primaryColor: "#f0dab1",
+    primaryColor: "#ad4b3b",
     secondaryColor: "#f77813",
-    accentColor: "#1c3147",
+    accentColor: "#f0dab1",
   },
   {
-    id: 3,
-    primaryColor: "#101557",
-    secondaryColor: "#5837e0",
-    accentColor: "#f4ad2e",
+    id: 9,
+    primaryColor: "#e0b500",
+    secondaryColor: "#c3386b",
+    accentColor: "#02475f",
   },
   {
-    id: 4,
-    primaryColor: "#a07694",
-    secondaryColor: "#87a7d2",
-    accentColor: "#c9d6e1",
+    id: 10,
+    primaryColor: "#639260",
+    secondaryColor: "#a75548",
+    accentColor: "#bac567",
   },
   {
-    id: 5,
-    primaryColor: "#0458f8",
-    secondaryColor: "#393e49",
-    accentColor: "#d0d8db",
+    id: 11,
+    primaryColor: "#0286bb",
+    secondaryColor: "#459b5f",
+    accentColor: "#b7ac85",
   },
   {
-    id: 6,
-    primaryColor: "#f0c575",
-    secondaryColor: "#eb1222",
-    accentColor: "#2f35da",
+    id: 12,
+    primaryColor: "#f7be82",
+    secondaryColor: "#b95e64",
+    accentColor: "#300122",
   },
   {
-    id: 7,
-    primaryColor: "#ab755f",
-    secondaryColor: "#434441",
-    accentColor: "#427274",
+    id: 13,
+    primaryColor: "#8b1b28",
+    secondaryColor: "#54aff7",
+    accentColor: "#d7e0de",
   },
-  
+  {
+    id: 14,
+    primaryColor: "#555e46",
+    secondaryColor: "#91732d",
+    accentColor: "#80c348",
+  },
+  {
+    id: 15,
+    primaryColor: "#2c5d62",
+    secondaryColor: "#20afa8",
+    accentColor: "#31de97",
+  },
 ];
 
 export default function Home() {
@@ -114,15 +119,7 @@ export default function Home() {
   const [accentColor, setAccentColor] = useState("#5e6282"); // set initial color value to white
   const [copied, setCopied] = useState(false);
   const [buttonText, setButtonText] = useState("Copy");
-  // const handleColorChange = (newColor) => {
-  //   setColor(newColor);
-  // };
-  const styleProps = (props) => {
-    const style = {
-      "backgroundColor": props.color
-    }
-
-  }
+  
   const pColor = primaryColor;
   const sColor = secondaryColor;
   const aColor = accentColor;
@@ -177,18 +174,7 @@ export default function Home() {
       return color;
     }
 
-    // function secColorGenerator() {
-    //   let colors = generateRandomColor();
-
-    //   if (colors == priColor) {
-    //     colors = generateRandomColor();
-    //   }
-
-    //   else {
-    //     colors
-    //   }
-
-    // }
+    
     const priColor = generateRandomColor();
     const secColor = generateRandomColor();
     const accColor = generateRandomColor();
@@ -196,11 +182,19 @@ export default function Home() {
   }
   // RandomColorGenerator end
 
+  // load more
+  const [itemsToShow, setItemsToShow] = useState(3);
+
+  const handleLoadMore = () => {
+    setItemsToShow(itemsToShow + 3);
+  };
+  // load more end
+
   return (
     <div className="flex bg-slate-400 h-[calc(100vh-3.5rem)]">
       {/* Sidebar  */}
-      <div className="min-w-[25%] bg-slate-300 pt-4 h-[calc(100vh-3.5rem)] flex justify-center shadow-xl shadow-black">
-        <div className="w-[calc(100%-20px)] bg-slate-600  rounded-t-xl rounded-b-xl h-[calc(100%-20px)]">
+      <div className="min-w-[25%] bg-slate-300 pt-4 h-[calc(100vh-3.5rem)] flex justify-center shadow-xl shadow-black  overflow-auto">
+        <div className="w-[calc(100%-20px)] bg-slate-600  rounded-t-xl rounded-b-xl h-[calc(100%-20px)] overflow-auto">
           <div className="h-8  rounded-t-xl sticky top-0 left-0 z-[52] bg-slate-500 flex gap-2 items-center px-4">
             <div className="w-3 h-3 bg-[#ed6a5e] rounded-full"></div>
             <div className="w-3 h-3 bg-[#f4be4f] rounded-full"></div>
@@ -209,7 +203,7 @@ export default function Home() {
 
           <div>
             {colors &&
-              colors.map((color) => (
+              colors.slice(0, itemsToShow).map((color) => (
                 <div
                   className="border-b-2 border-solid border-gray-800 "
                   key={color.id}
@@ -232,34 +226,56 @@ export default function Home() {
                       use this
                     </button>
                   </div>
-                  <div
-                    className="flex  justify-center gap-2 py-3 px-4"
-                    onClick={() => {
-                      const primaryColor = `${color.primaryColor}`;
-                      const secondaryColor = `${color.secondaryColor}`;
-                      const accentColor = `${color.accentColor}`;
-                      handleColorChanges(
-                        primaryColor,
-                        secondaryColor,
-                        accentColor
-                      );
-                    }}
-                  >
-                    <div
-                      className={`w-8 h-8 rounded-full bg-[${color.primaryColor}]`}
-                      title={`${color.primaryColor}`}
-                    ></div>
-                    <div
-                      className={`w-8 h-8 rounded-full bg-[${color.secondaryColor}]`}
-                      title={`${color.secondaryColor}`}
-                    ></div>
-                    <div
-                      className={`w-8 h-8 rounded-full bg-[${color.accentColor}]`}
-                      title={`${color.accentColor}`}
-                    ></div>
-                  </div>
+
+                  {(() => {
+                    const a = color.primaryColor;
+                    const b = color.secondaryColor;
+                    const c = color.accentColor;
+
+                    return (
+                      <div
+                        className="flex  justify-center gap-2 py-3 px-4"
+                        onClick={() => {
+                          const primaryColor = `${color.primaryColor}`;
+                          const secondaryColor = `${color.secondaryColor}`;
+                          const accentColor = `${color.accentColor}`;
+                          handleColorChanges(
+                            primaryColor,
+                            secondaryColor,
+                            accentColor
+                          );
+                        }}
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-full `}
+                          style={{ backgroundColor: a }}
+                          title={`${color.primaryColor}`}
+                        ></div>
+                        <div
+                          className={`w-8 h-8 rounded-full`}
+                          style={{ backgroundColor: b }}
+                          title={`${color.secondaryColor}`}
+                        ></div>
+                        <div
+                          className={`w-8 h-8 rounded-full`}
+                          style={{ backgroundColor: c }}
+                          title={`${color.accentColor}`}
+                        ></div>
+                      </div>
+                    );
+                  })()}
                 </div>
               ))}
+            {itemsToShow < colors.length && (
+              <div className="flex justify-center">
+                <button
+                  onClick={handleLoadMore}
+                  className="px-4 py-2 mt-4  font-semibold  rounded-md shadow-md bg-cyan-800 hover:bg-cyan-900 hover:shadow-cyan-700 "
+                >
+                  Load More
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
